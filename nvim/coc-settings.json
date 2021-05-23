@@ -1,0 +1,25 @@
+{
+  "prettier.singleQuote": true,
+  //"coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "scss", "html", "css", "markdown"],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "razor": "html",
+    "plaintext": "pug"
+  },
+  "cSpell.userWords": [
+    "DDOS",
+    "Divar",
+    "cheatsheets",
+    "cloudinary",
+    "nestjs",
+    "noresize",
+    "quicklook",
+    "reqwest",
+    "sdcsd",
+    "sidenav",
+    "structopt",
+    "uirouter"
+  ],
+  "coc.preferences.formatOnSaveFiletypes": ["rust", "typescript"]
+}
