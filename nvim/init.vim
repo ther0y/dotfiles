@@ -7,6 +7,7 @@
 " A customized init.vim for neovim (https://neovim.io/)
 
 let mapleader=","
+let g:sessions_path='$HOME/dotfiles/nvim/sessions/'
 let g:rehash256 = 1
 
 source $HOME/.config/nvim/plugins.vim

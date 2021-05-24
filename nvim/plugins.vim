@@ -33,10 +33,16 @@ Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ==> Startify
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:startify_session_dir = g:sessions_path
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ==> Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ==> Prettier

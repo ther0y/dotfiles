@@ -107,6 +107,7 @@ noremap fi :PlugInstall <cr>
 noremap ft :Tags <cr>
 noremap fh :Helptags <cr>
 noremap fd :call fzf#run(fzf#wrap({'source': "find ../* -type d -not -path '**/node_modules/*'"}))<CR>
+noremap fp :call fzf#run(fzf#wrap({'dir': g:sessions_path, 'source': "ls *", 'sink': 'SLoad'}))<CR>
 noremap fg :Rg 
 "let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}"
 

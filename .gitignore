@@ -4,3 +4,4 @@
 tmp/
 
 .tmux/plugins
+nvim/sessions
