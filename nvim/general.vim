@@ -26,7 +26,7 @@ nnoremap <C-l> <C-i>
 nnoremap <Leader><space> :noh<cr>
 nnoremap <S-r> :%s//gI<Left><left><Left>
 let g:NERDTreeWinSize=30
-nnoremap <C-n> :NERDTreeToggle <CR>
+nnoremap <C-n> :CocCommand explorer <CR>
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<,space:␣
 noremap <F5> :set list!<CR>
 inoremap <F5> <C-o>:set list!<CR>

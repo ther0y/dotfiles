@@ -2,7 +2,15 @@
 " ==> keys
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " clipboard
-vmap <leader>y "+y
+vnoremap <leader>y "+y
+vnoremap <leader>p "+P
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ==> keys easy motion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+xmap <Leader><Leader>f <Plug>(easymotion-bd-f)
+omap <Leader><Leader>f <Plug>(easymotion-bd-f)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ==> keys writers
@@ -24,7 +32,7 @@ map <leader>q! :q! <cr>
 " ==> keys buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>bn :bn <cr> " go to next buffer
-map <leader>bd :bd <cr> " delete buffer
+map <leader>bd bp\|bd! <cr> " delete buffer
 
 map <silent> <leader>o :BufOnly <cr>
 
@@ -72,7 +80,7 @@ noremap <C-t> :tabnew<CR> " open new tab
 " ==> keys init.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>. :source ~/.config/nvim/init.vim <cr>
-map <leader>, :tabedit ~/.config/nvim/init.vim <cr>
+map <leader>< :tabedit ~/.config/nvim/init.vim <cr>
 map <leader>; :CocConfig<cr>
 
 "
@@ -103,13 +111,20 @@ map <C-p> :Files <cr>
 noremap fb :Buffers <cr>
 noremap fl :BLines <cr>
 noremap Fg :GFiles ?<cr>
-noremap fi :PlugInstall <cr>
 noremap ft :Tags <cr>
 noremap fh :Helptags <cr>
-noremap fd :call fzf#run(fzf#wrap({'source': "find ../* -type d -not -path '**/node_modules/*'"}))<CR>
-noremap fp :call fzf#run(fzf#wrap({'dir': g:sessions_path, 'source': "ls *", 'sink': 'SLoad'}))<CR>
 noremap fg :Rg 
+noremap fd :call fzf#run(fzf#wrap(
+      \ {'source': "find ../* -type d -not -path '**/node_modules/*'"}))<CR>
+noremap fx :call fzf#run(fzf#wrap(
+      \ {'source': GetActiveBuffers(), "sink": "bdelete!"}))<CR>
 "let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ==> Docker
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <leader>Du :call DockerCompose("up")<CR>
+noremap <leader>Dd :call DockerCompose("down")<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ==> keys moving code up / down
@@ -130,8 +145,16 @@ nnoremap <Leader>gl :G log<CR>  " git log
 nnoremap <Leader>gL :Glog<CR>  " git log
 nnoremap <Leader>gr :Git reflog<CR>  " git reflog
 nnoremap <leader>gd :Gdiff<CR> " git diff
+nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gD :Gdiffsplit<CR> " git diffsplit
 nnoremap <leader>C  :Git checkout 
 
 nmap gs <Plug>(coc-git-chunkinfo)
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ==> Project Management
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <leader>ps :SS!<CR>
+nnoremap <leader>px :SClose<CR>
+noremap <leader>pp :call fzf#run(fzf#wrap({'dir': g:sessions_path, 'source': "ls *", 'sink': 'SLoad'}))<CR>

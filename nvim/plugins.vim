@@ -29,8 +29,17 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdcommenter'
 Plug 'junegunn/goyo.vim'
 Plug 'wakatime/vim-wakatime'
+Plug 'stsewd/fzf-checkout.vim'
+Plug 'voldikss/vim-floaterm'
+Plug 'easymotion/vim-easymotion'
+Plug 'puremourning/vimspector'
 
 call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ==> Vimspector
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimspector_enable_mappings = 'HUMAN'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ==> Startify
@@ -43,6 +52,8 @@ let g:startify_session_dir = g:sessions_path
 let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#show_tab_type = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ==> Prettier

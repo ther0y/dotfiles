@@ -1,6 +1,7 @@
 {
   "prettier.singleQuote": true,
   //"coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "scss", "html", "css", "markdown"],
+  "coc.preferences.formatOnSaveFiletypes": ["rust", "typescript"],
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "vue-html": "html",
@@ -21,5 +22,6 @@
     "structopt",
     "uirouter"
   ],
-  "coc.preferences.formatOnSaveFiletypes": ["rust", "typescript"]
+  "explorer.position": "left",
+  "explorer.width": 40
 }

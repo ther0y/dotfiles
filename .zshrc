@@ -3,6 +3,12 @@ export ZSH="/Users/masood/.oh-my-zsh"
 
 export PYTHONIOENCODING=utf-8
 
+#export GOPATH=$HOME/golang
+#export GOROOT=/usr/local/opt/go/libexec
+#export GOBIN=$GOPATH/bin
+#export PATH=$PATH:$GOPATH
+#export PATH=$PATH:$GOROOT/bin
+
 export BAT_THEME="TwoDark"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS="--height 60% --border --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
@@ -15,8 +21,9 @@ export PYTHON_2_BIN="$HOME/Library/Python/2.7/bin"
 export FLUTER_HOME="$HOME/development/flutter/bin"
 export COMPOSER_BIN="$HOME/.composer/vendor/bin"
 export EMACS_BIN="$HOME/.emacs.d/bin"
+export GO_BIN="$HOME/go/bin"
 
-export PATH="$PATH:$FLUTER_HOME:$ANDROID_PLATFORM_TOOLS:$PYTHON_2_BIN:$COMPOSER_BIN:$EMACS_BIN"
+export PATH="$PATH:$FLUTER_HOME:$ANDROID_PLATFORM_TOOLS:$PYTHON_2_BIN:$COMPOSER_BIN:$EMACS_BIN:$GO_BIN"
 
 export JQPATH=/usr/local/bin
 
@@ -32,6 +39,7 @@ alias v="nvim"
 alias pa="php artisan"
 alias tmux='tmux -2'
 alias d="docker"
+alias gsum="git stash -u -m"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -41,3 +49,5 @@ export PATH="/usr/local/sbin:$PATH"
 function zsh-stats() {
   fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n25
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
