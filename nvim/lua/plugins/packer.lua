@@ -21,6 +21,14 @@ return packer.startup(function(use)
 	use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
 	use("saadparwaiz1/cmp_luasnip")
 
+	use({ "tpope/vim-surround" })
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
+
 	use("joshdick/onedark.vim")
 	use("morhetz/gruvbox")
 	use("mattn/emmet-vim")
@@ -107,4 +115,5 @@ return packer.startup(function(use)
 		end,
 	})
 	use({ "jose-elias-alvarez/null-ls.nvim" })
+	use({ "ellisonleao/glow.nvim" })
 end)

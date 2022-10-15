@@ -1,4 +1,3 @@
-
 export ZSH="/Users/masood/.oh-my-zsh"
 export EDITOR='nvim'
 export PYTHONIOENCODING=utf-8
