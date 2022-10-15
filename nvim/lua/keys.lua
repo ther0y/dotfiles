@@ -122,7 +122,7 @@ nmap("<leader>px", "<cmd>SClose<CR>")
 nmap("<leader>pp", "<cmd>call fzf#run(fzf#wrap({'dir': g:sessions_path, 'source': \"ls *\", 'sink': 'SLoad'}))<CR>")
 
 -- telescope
-nmap("<c-p>", "<cmd>Telescope find_files<cr>")
+nmap("<c-p>", "<cmd>Telescope find_files hidden=true<cr>")
 nmap("fg", "<cmd>Telescope live_grep<cr>")
 nmap("fu", "<cmd>Telescope grep_string<cr>")
 vmap("fu", "<cmd>Telescope grep_string<cr>")
