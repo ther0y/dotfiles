@@ -1,5 +1,7 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
+local telescope_builtin = require("telescope.builtin")
+local commander = require("utils.commander")
 
 local function nmap(key, action)
 	keymap("n", key, action, opts)
@@ -122,8 +124,18 @@ nmap("<leader>px", "<cmd>SClose<CR>")
 nmap("<leader>pp", "<cmd>call fzf#run(fzf#wrap({'dir': g:sessions_path, 'source': \"ls *\", 'sink': 'SLoad'}))<CR>")
 
 -- telescope
-nmap("<c-p>", "<cmd>Telescope find_files hidden=true<cr>")
+nmap("<c-p>", "<cmd>Telescope find_files<cr>")
+nmap("<a-p>", "<cmd>Telescope find_files hidden=true<cr>")
 nmap("fg", "<cmd>Telescope live_grep<cr>")
+nmap("fG", function()
+	local cwd = vim.fn.getcwd()
+	local files = commander.execute("git status --short -u | awk '{print \"-g\"$2}'")
+	telescope_builtin.live_grep({
+		additional_args = function()
+			return files
+		end,
+	})
+end)
 nmap("fu", "<cmd>Telescope grep_string<cr>")
 vmap("fu", "<cmd>Telescope grep_string<cr>")
 nmap("fb", "<cmd>Telescope buffers<cr>")
@@ -136,3 +148,12 @@ nmap("gs", "<cmd>Telescope git_status<cr>")
 nmap("gt", "<cmd>Telescope git_stash<cr>")
 nmap("cl", "<cmd>Telescope treesitter<cr>")
 nmap("cr", "<cmd>Telescope lsp_references<cr>")
+
+-- trouble
+-- Lua
+nmap("<leader>xx", "<cmd>TroubleToggle<cr>")
+nmap("<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+nmap("<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>")
+nmap("<leader>xl", "<cmd>TroubleToggle loclist<cr>")
+nmap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>")
+nmap("gR", "<cmd>TroubleToggle lsp_references<cr>")

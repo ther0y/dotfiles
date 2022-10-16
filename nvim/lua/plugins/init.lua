@@ -1,4 +1,5 @@
 require("plugins.packer")
+require("plugins.mason")
 require("plugins.lsp")
 require("plugins.cmp-config")
 require("plugins.nvimtree")

@@ -5,6 +5,7 @@ local options = {
 	incsearch = true,
 	backup = false,
 	swapfile = false,
+	number = true,
 	relativenumber = true,
 	tabstop = 4,
 	shiftwidth = 4,
@@ -14,6 +15,9 @@ local options = {
 	splitright = true,
 	termguicolors = true,
 	listchars = "eol:¬,tab:>-,trail:~,extends:>,precedes:<,space:␣",
+	foldmethod = "syntax",
+	foldnestmax = 3,
+	foldminlines = 1,
 }
 
 for key, value in pairs(options) do
