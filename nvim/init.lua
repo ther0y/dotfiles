@@ -14,4 +14,4 @@ require("cmd")
 require("plugins")
 require("keys")
 --source $HOME/.config/nvim/autocmd.vim
-vim.cmd("source" .. vim.fn.getcwd() .. "/nvim/autocmd.vim")
+vim.cmd("source ~/.config/nvim/autocmd.vim")
