@@ -41,6 +41,7 @@ cmap("<f5>", "<c-c><cmd>set list!<cr>")
 nmap("<f7>", "mmgg=G`m")
 nmap("<c-u>", "<cmd>UndotreeToggl<cr>")
 vmap("u", "<esc><cmd>Gdiff<cr>gv<cmd>diffget<cr><c-w><c-w>ZZ")
+nmap("<leader><leader>x", "<cmd>w<cr><cmd>source %<cr>")
 
 --utils
 nmap("<leader>z", "<cmd>ZoomToggle<CR>")
@@ -82,8 +83,9 @@ nmap("<leader>\\", "<cmd>vsplit<cr>")
 
 -- tabs
 nmap("<c-t>", "<cmd>tabnew<cr>")
-nmap("<s-right>", "<cmd>tabnext<cr>")
-nmap("<s-left>", "<cmd>tabrewind<cr>")
+nmap("<s-right>", "<cmd>BufferLineCycleNext<cr>")
+nmap("<s-left>", "<cmd>BufferLineCyclePrev<cr>")
+nmap("<c-w>", "<cmd>bdelete %<cr>")
 
 -- source files
 nmap("<leader>.", "<cmd>source ~/.config/nvim/init.vim<cr>")

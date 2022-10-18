@@ -1,6 +1,6 @@
 require("nvim-tree").setup({
 	sort_by = "case_sensitive",
-	focus_empty_on_setup = true,
+	focus_empty_on_setup = false,
 	disable_netrw = true,
 	open_on_setup = true,
 	--open_on_setup_file = true,

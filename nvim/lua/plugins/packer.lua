@@ -24,6 +24,8 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
 
+	use("simrat39/symbols-outline.nvim")
+
 	use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
 	use("saadparwaiz1/cmp_luasnip")
 
@@ -43,6 +45,10 @@ return packer.startup(function(use)
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
+
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "kyazdani42/nvim-web-devicons" })
+
+	use("j-hui/fidget.nvim")
 	use("junegunn/fzf")
 	use("junegunn/fzf.vim")
 	use("jesseleite/vim-agriculture")

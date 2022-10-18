@@ -44,11 +44,9 @@ alias gsum="git stash -u -m"
 alias k="kubectl"
 alias ctags="`brew --prefix`/bin/ctags"
 alias cat="bat"
+alias npm-exec="PATH=$(npm bin):$PATH"
 complete -F __start_kubectl k
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/usr/local/sbin:$PATH"
 
 function zsh-stats() {
@@ -93,3 +91,5 @@ export PATH="$HOME/.serverless/bin:$PATH:$KREW_PATH"
 #source /usr/local/opt/spaceship/spaceship.zsh
 
 eval "$(zoxide init zsh)"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

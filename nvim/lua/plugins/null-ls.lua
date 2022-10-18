@@ -14,9 +14,14 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 require("null-ls").setup({
 	sources = {
 		nls.builtins.formatting.stylua,
-		nls.builtins.formatting.prettier,
+		nls.builtins.formatting.prettier.with({
+			command = function()
+				return "prettier"
+			end,
+		}),
 		nls.builtins.diagnostics.eslint,
 		nls.builtins.completion.spell,
+		nls.builtins.code_actions.eslint,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
 	on_attach = function(client, bufnr)
