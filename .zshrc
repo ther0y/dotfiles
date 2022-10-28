@@ -21,7 +21,8 @@ export PYTHON_2_BIN="$HOME/Library/Python/2.7/bin"
 export FLUTER_HOME="$HOME/development/flutter/bin"
 export COMPOSER_BIN="$HOME/.composer/vendor/bin"
 export EMACS_BIN="$HOME/.emacs.d/bin"
-export GO_BIN="$HOME/go/bin"
+export GOPATH="$HOME/go"
+export GO_BIN="$GOPATH/bin"
 export SOLANAPATH="/Users/masood/.local/share/solana/install/active_release/bin"
 
 export PATH="$MY_SHELL_SCRIPTS:$FLUTER_HOME:$ANDROID_PLATFORM_TOOLS:$PYTHON_2_BIN:$COMPOSER_BIN:$EMACS_BIN:$GO_BIN:$SOLANAPATH:$PATH"
@@ -44,7 +45,8 @@ alias gsum="git stash -u -m"
 alias k="kubectl"
 alias ctags="`brew --prefix`/bin/ctags"
 alias cat="bat"
-alias npm-exec="PATH=$(npm bin):$PATH"
+alias ls="exa -l"
+alias tt="tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
 complete -F __start_kubectl k
 
 export PATH="/usr/local/sbin:$PATH"
@@ -93,3 +95,11 @@ export PATH="$HOME/.serverless/bin:$PATH:$KREW_PATH"
 eval "$(zoxide init zsh)"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+export FZF_DEFAULT_OPTS=" \
+  $FZF_DEFAULT_OPTS
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+
+source $HOME/.proxiesrc

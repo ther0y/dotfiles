@@ -24,12 +24,34 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
 
+	use("preservim/tagbar")
+
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+		config = function()
+			vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+			require("catppuccin").setup()
+			vim.api.nvim_command("colorscheme catppuccin")
+		end,
+	})
+
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
+
 	use("simrat39/symbols-outline.nvim")
 
 	use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
 	use("saadparwaiz1/cmp_luasnip")
 
-	use({ "tpope/vim-surround" })
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
@@ -114,12 +136,15 @@ return packer.startup(function(use)
 		--tag = 'nightly' -- optional, updated every week. (see issue #1193)
 	})
 
+	use("ray-x/go.nvim")
+	use("ray-x/guihua.lua") -- recommanded if need floating window support
+
+	use("wakatime/vim-wakatime")
+
 	use({
 		"akinsho/toggleterm.nvim",
 		tag = "*",
-		config = function()
-			require("toggleterm").setup()
-		end,
+		config = function() end,
 	})
 
 	use({
@@ -127,17 +152,6 @@ return packer.startup(function(use)
 		-- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
 	})
 
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
 	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use({ "ellisonleao/glow.nvim" })
 end)

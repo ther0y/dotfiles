@@ -1,5 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.diagnostics.disable": [
+        "deprecated"
+    ],
     "Lua.diagnostics.globals": [
         "vim",
         "nmap",
@@ -7,6 +10,7 @@
         "xmap",
         "imap",
         "omap",
-        "tmap"
+        "tmap",
+        "cmap"
     ]
 }

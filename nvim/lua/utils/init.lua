@@ -1,3 +1,6 @@
+require("utils.dump")
+require("utils.table-functions")
+require("utils.map-functions")
 require("utils.indenting")
 require("utils.indentconvert")
 require("utils.minexec")

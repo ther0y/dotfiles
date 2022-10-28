@@ -19,9 +19,13 @@ require("null-ls").setup({
 				return "prettier"
 			end,
 		}),
+		nls.builtins.formatting.gofmt,
+		nls.builtins.formatting.goimports,
+		nls.builtins.code_actions.refactoring,
 		nls.builtins.diagnostics.eslint,
 		nls.builtins.completion.spell,
 		nls.builtins.code_actions.eslint,
+		nls.builtins.diagnostics.golangci_lint,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
 	on_attach = function(client, bufnr)

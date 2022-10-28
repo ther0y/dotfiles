@@ -1,35 +1,4 @@
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-local telescope_builtin = require("telescope.builtin")
-local commander = require("utils.commander")
-
-local function nmap(key, action)
-	keymap("n", key, action, opts)
-end
-
-local function vmap(key, action)
-	keymap("v", key, action, opts)
-end
-
-local function xmap(key, action)
-	keymap("x", key, action, opts)
-end
-
-local function imap(key, action)
-	keymap("i", key, action, opts)
-end
-
-local function omap(key, action)
-	keymap("o", key, action, opts)
-end
-
-local function tmap(key, action)
-	keymap("t", key, action, opts)
-end
-
-local function cmap(key, action)
-	keymap("c", key, action, opts)
-end
+local term = require("utils.term")
 
 -- general
 nmap("<c-l>", "<c-i>")
@@ -42,6 +11,7 @@ nmap("<f7>", "mmgg=G`m")
 nmap("<c-u>", "<cmd>UndotreeToggl<cr>")
 vmap("u", "<esc><cmd>Gdiff<cr>gv<cmd>diffget<cr><c-w><c-w>ZZ")
 nmap("<leader><leader>x", "<cmd>w<cr><cmd>source %<cr>")
+nmap("<leader>cp", "<cmd>cp<cr>")
 
 --utils
 nmap("<leader>z", "<cmd>ZoomToggle<CR>")
@@ -58,12 +28,13 @@ omap("<leader><leader>f", "<Plug>(easymotion-overwin-f)")
 -- file actions
 nmap("<C-s>", "<cmd>w<cr>")
 imap("<C-s>", "<Esc><cmd>w<cr>")
-nmap("<leader>ww", "<cmd>w<cr>")
-nmap("<leader>w!", "<cmd>w!<cr>")
+nmap("<leader>ww", "<cmd>w<cr>", { desc = "Write to file" })
+nmap("<leader>w!", "<cmd>w!<cr>", { desc = "Force write to file" })
 --map <leader>wr :w<cr>:source ~/.config/nvim/init.vim<cr>
 --map <leader>wi :w<cr>:source ~/.config/nvim/init.vim<cr>:PlugInstall<cr>
-nmap("<leader>qq", "<cmd>q<cr>")
-nmap("<leader>q!", "<cmd>q!<cr>")
+nmap("<leader>qq", "<cmd>q<cr>", { desc = "quit" })
+nmap("<leader>q!", "<cmd>q!<cr>", { desc = "Force quit" })
+nmap("<a-;>", "<cmd>NvimTreeFindFile<cr>")
 
 -- pane resize & splits
 nmap("<c-right>", "<cmd>vertical resize +3<cr>")
@@ -81,8 +52,14 @@ nmap("<a-down>", "<c-w><down>")
 nmap("<leader>-", "<cmd>split<cr>")
 nmap("<leader>\\", "<cmd>vsplit<cr>")
 
+-- pane movement
+nmap("<leader><right>", "<c-w>L")
+nmap("<leader><left>", "<c-w>H")
+nmap("<leader><up>", "<c-w>K")
+nmap("<leader><down>", "<c-w>J")
+
 -- tabs
-nmap("<c-t>", "<cmd>tabnew<cr>")
+nmap("<a-t>", "<cmd>tabnew<cr>")
 nmap("<s-right>", "<cmd>BufferLineCycleNext<cr>")
 nmap("<s-left>", "<cmd>BufferLineCyclePrev<cr>")
 nmap("<c-w>", "<cmd>bdelete %<cr>")
@@ -96,6 +73,9 @@ tmap("<c-n>", "<c-\\><c-n>")
 nmap("<leader>tt", "<cmd>vnew term://zsh<cr>")
 nmap("<leader>tv", "<cmd>vsplit<cr><cmd>terminal<cr>i")
 nmap("<leader>th", "<cmd>split<cr><cmd>terminal<cr>i")
+nmap("<c-'>", function()
+	term.floating_terminal_toggle()
+end)
 
 --fzf
 nmap("fx", '<cmd>call fzf#run(fzf#wrap({\'source\': GetActiveBuffers(), "sink": "bdelete!"}))<cr>')
@@ -119,37 +99,12 @@ nmap("<leader>gc", "<cmd>GBranches<CR>")
 nmap("<leader>gD", "<cmd>Gdiffsplit<CR>")
 nmap("<leader>C", "<cmd>Git checkout")
 nmap("<leader>gz", "<cmd>lua require('utils.term').git_client_toggle()<CR>")
+nmap("<leader>lf", "<cmd>lua require('utils.fm').git_client_toggle()<CR>")
 
 -- sessions
 nmap("<leader>ps", "<cmd>SS!<CR>")
 nmap("<leader>px", "<cmd>SClose<CR>")
 nmap("<leader>pp", "<cmd>call fzf#run(fzf#wrap({'dir': g:sessions_path, 'source': \"ls *\", 'sink': 'SLoad'}))<CR>")
-
--- telescope
-nmap("<c-p>", "<cmd>Telescope find_files<cr>")
-nmap("<a-p>", "<cmd>Telescope find_files hidden=true<cr>")
-nmap("fg", "<cmd>Telescope live_grep<cr>")
-nmap("fG", function()
-	local cwd = vim.fn.getcwd()
-	local files = commander.execute("git status --short -u | awk '{print \"-g\"$2}'")
-	telescope_builtin.live_grep({
-		additional_args = function()
-			return files
-		end,
-	})
-end)
-nmap("fu", "<cmd>Telescope grep_string<cr>")
-vmap("fu", "<cmd>Telescope grep_string<cr>")
-nmap("fb", "<cmd>Telescope buffers<cr>")
-nmap("fh", "<cmd>Telescope help_tags<cr>")
-nmap("fl", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-nmap("fm", "<cmd>Telescope keymaps<cr>")
-nmap("fd", "<cmd>Telescope diagnostics<cr>")
-nmap("gb", "<cmd>Telescope git_branches<cr>")
-nmap("gs", "<cmd>Telescope git_status<cr>")
-nmap("gt", "<cmd>Telescope git_stash<cr>")
-nmap("cl", "<cmd>Telescope treesitter<cr>")
-nmap("cr", "<cmd>Telescope lsp_references<cr>")
 
 -- trouble
 -- Lua

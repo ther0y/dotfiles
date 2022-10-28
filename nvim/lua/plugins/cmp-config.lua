@@ -14,8 +14,8 @@ cmp.setup({
 		end,
 	},
 	window = {
-		-- completion = cmp.config.window.bordered(),
-		-- documentation = cmp.config.window.bordered(),
+		--completion = cmp.config.window.bordered(),
+		--documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -24,15 +24,31 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
+	formatting = {
+		fields = { "menu", "abbr", "kind" },
+		format = function(entry, item)
+			local menu_icon = {
+				nvim_lsp = "λ",
+				luasnip = "⋗",
+				buffer = "Ω",
+				path = "🖫",
+			}
+
+			item.menu = menu_icon[entry.source.name]
+			return item
+		end,
+	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		--{ name = 'vsnip' }, -- For vsnip users.
-		{ name = "luasnip" }, -- For luasnip users.
-		-- { name = 'ultisnips' }, -- For ultisnips users.
-		-- { name = 'snippy' }, -- For snippy users.
-	}, {
-		{ name = "buffer" },
-	}),
+		{
+			name = "nvim_lsp",
+			entry_filter = function(entry)
+				return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
+			end,
+			keyword_length = 3,
+		},
+		{ name = "buffer", keyword_length = 2 },
+		{ name = "luasnip", keyword_length = 3 },
+	}, {}),
 })
 
 -- Set configuration for specific filetype.
@@ -63,8 +79,8 @@ cmp.setup.cmdline(":", {
 })
 
 -- Set up lspconfig.
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+--local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require("lspconfig")["<YOUR_LSP_SERVER>"].setup({
-	capabilities = capabilities,
-})
+--require("lspconfig")["<YOUR_LSP_SERVER>"].setup({
+--capabilities = capabilities,
+--})

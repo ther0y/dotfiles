@@ -17,29 +17,32 @@ ls.config.set_config({
 	},
 })
 
---vim.keymap.set({ "i", "s" }, "<s-k>", function()
---if ls.expand_or_jumpable() then
---ls.expand_or_jump()
---end
---end, { silent = false, noremap = true })
+local options = { silent = true, noremap = true }
 
---vim.keymap.set({ "i", "s" }, "<s-j>", function()
---if ls.jumpable(-1) then
---ls.jump(-1)
---end
---end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<c-l>", function()
+	if ls.expand_or_jumpable() then
+		ls.expand_or_jump()
+	end
+end, options)
 
---vim.keymap.set({ "i", "s" }, "<s-l>", function()
+--
+vim.keymap.set({ "i", "s" }, "<c-o>", function()
+	if ls.jumpable(-1) then
+		ls.jump(-1)
+	end
+end, options)
+
+--vim.keymap.set({ "i", "s" }, "<c-s-l>", function()
 --if ls.choice_active() then
 --ls.change_choice(1)
 --end
---end, { silent = true })
+--end, options)
 
---vim.keymap.set({ "i", "s" }, "<s-h>", function()
+--vim.keymap.set({ "i", "s" }, "<c-s-o>", function()
 --if ls.choice_active() then
 --ls.change_choice(-1)
 --end
---end, { silent = true })
+--end, options)
 
 vim.keymap.set("n", "<leader><leader>s", "<smd>source ~/.config/nvim/lua/plugins/luasnip.lua<sr>")
 

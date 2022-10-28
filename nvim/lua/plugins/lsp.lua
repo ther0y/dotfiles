@@ -1,25 +1,32 @@
-require("lspconfig").tsserver.setup({
-	on_attach = function()
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
-		vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { buffer = 0 })
-		vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
-		vim.keymap.set("n", " df", vim.diagnostic.goto_next, { buffer = 0 })
-	end,
+local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local function on_attach()
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
+	vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { buffer = 0 })
+	vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
+	vim.keymap.set("n", "<leader>df", vim.diagnostic.goto_next, { buffer = 0 })
+end
+
+lspconfig.tsserver.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
 
---require("lspconfig").angularls.setup({})
+--lspconfig.angularls.setup({})
 
-require("lspconfig").sumneko_lua.setup({
-	on_attach = function()
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
-		vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { buffer = 0 })
-		vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
-		vim.keymap.set("n", " df", vim.diagnostic.goto_next, { buffer = 0 })
-	end,
+lspconfig.sumneko_lua.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.graphql.setup({})
+
+lspconfig.gopls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
 
 --local languageServerPath = "/Users/masood/.nvm/versions/node/v16.15.0/libV

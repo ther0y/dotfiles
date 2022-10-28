@@ -1,0 +1,27 @@
+local telescope_builtin = require("telescope.builtin")
+local commander = require("utils.commander")
+
+nmap("<c-p>", "<cmd>Telescope find_files<cr>")
+nmap("<a-p>", "<cmd>Telescope find_files hidden=true<cr>")
+nmap("fg", "<cmd>Telescope live_grep<cr>")
+nmap("fG", function()
+	local cwd = vim.fn.getcwd()
+	local files = commander.execute("git status --short -u | awk '{print \"-g\"$2}'")
+	telescope_builtin.live_grep({
+		additional_args = function()
+			return files
+		end,
+	})
+end)
+nmap("fS", "<cmd>Telescope grep_string<cr>")
+nmap("fs", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
+nmap("fb", "<cmd>Telescope buffers<cr>")
+nmap("fh", "<cmd>Telescope help_tags<cr>")
+nmap("fl", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+nmap("fm", "<cmd>Telescope keymaps<cr>")
+nmap("fd", "<cmd>Telescope diagnostics<cr>")
+nmap("gb", "<cmd>Telescope git_branches<cr>")
+nmap("gs", "<cmd>Telescope git_status<cr>")
+nmap("gt", "<cmd>Telescope git_stash<cr>")
+nmap("cl", "<cmd>Telescope treesitter<cr>")
+nmap("cr", "<cmd>Telescope lsp_references<cr>")
