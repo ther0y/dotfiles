@@ -4,7 +4,7 @@ local commander = require("utils.commander")
 nmap("<c-p>", "<cmd>Telescope find_files<cr>")
 nmap("<a-p>", "<cmd>Telescope find_files hidden=true<cr>")
 nmap("fg", "<cmd>Telescope live_grep<cr>")
-nmap("fG", function()
+nmap("<leader>fg", function()
 	local cwd = vim.fn.getcwd()
 	local files = commander.execute("git status --short -u | awk '{print \"-g\"$2}'")
 	telescope_builtin.live_grep({

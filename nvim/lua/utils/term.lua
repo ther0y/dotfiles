@@ -20,6 +20,14 @@ function M.floating_terminal_toggle()
 	floating_terminal():toggle()
 end
 
+function M.htop_toggle()
+	floating_terminal("htop"):toggle()
+end
+
+function M.btop_toggle()
+	floating_terminal("btop"):toggle()
+end
+
 function M.git_client_toggle()
 	floating_terminal(git_tui):toggle()
 end

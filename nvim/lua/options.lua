@@ -1,3 +1,4 @@
+local nvim_treesitter = require("nvim-treesitter")
 local options = {
 	mouse = "a",
 	path = vim.opt.path + "**",
@@ -16,9 +17,14 @@ local options = {
 	termguicolors = true,
 	listchars = "eol:¬,tab:>-,trail:~,extends:>,precedes:<,space:␣",
 	foldmethod = "syntax",
+	--foldmethod="expr",
+	--foldexpr=nvim_treesitter#foldexpr(),
 	foldnestmax = 3,
 	foldminlines = 1,
 }
+
+--set foldmethod=expr
+--set foldexpr=nvim_treesitter#foldexpr()
 
 for key, value in pairs(options) do
 	vim.opt[key] = value

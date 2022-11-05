@@ -13,6 +13,7 @@ local nls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 require("null-ls").setup({
 	sources = {
+		-- formatting
 		nls.builtins.formatting.stylua,
 		nls.builtins.formatting.prettier.with({
 			command = function()
@@ -21,11 +22,29 @@ require("null-ls").setup({
 		}),
 		nls.builtins.formatting.gofmt,
 		nls.builtins.formatting.goimports,
-		nls.builtins.code_actions.refactoring,
+		nls.builtins.formatting.black,
+		nls.builtins.formatting.codespell,
+		-- diagnostics
 		nls.builtins.diagnostics.eslint,
-		nls.builtins.completion.spell,
-		nls.builtins.code_actions.eslint,
 		nls.builtins.diagnostics.golangci_lint,
+		nls.builtins.diagnostics.actionlint,
+		nls.builtins.diagnostics.ansiblelint,
+		--nls.builtins.diagnostics.codespell,
+		--nls.builtins.diagnostics.cspell,
+		--nls.builtins.diagnostics.cspell,
+		nls.builtins.diagnostics.flake8,
+		nls.builtins.diagnostics.luacheck,
+		nls.builtins.diagnostics.stylint,
+		nls.builtins.diagnostics.tidy,
+		nls.builtins.diagnostics.tsc,
+		-- completion
+		nls.builtins.completion.luasnip,
+		nls.builtins.completion.spell,
+		-- code Actions
+		--nls.builtins.code_actions.refactoring,
+		nls.builtins.code_actions.eslint,
+		nls.builtins.code_actions.gitsigns,
+		nls.builtins.code_actions.shellcheck,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
 	on_attach = function(client, bufnr)
@@ -38,8 +57,8 @@ require("null-ls").setup({
 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
 					vim.lsp.buf.format({
 						bufnr = bufnr,
-						filter = function(client)
-							return client.name == "null-ls"
+						filter = function(c)
+							return c.name == "null-ls"
 						end,
 					})
 				end,

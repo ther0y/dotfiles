@@ -11,6 +11,11 @@ local function on_attach()
 end
 
 lspconfig.tsserver.setup({
+	init_options = {
+		preferences = {
+			disableSuggestions = true,
+		},
+	},
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -27,6 +32,20 @@ lspconfig.graphql.setup({})
 lspconfig.gopls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+})
+
+lspconfig.emmet_ls.setup({
+	-- on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+	init_options = {
+		html = {
+			options = {
+				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+				["bem.enabled"] = true,
+			},
+		},
+	},
 })
 
 --local languageServerPath = "/Users/masood/.nvm/versions/node/v16.15.0/libV

@@ -47,6 +47,8 @@ alias ctags="`brew --prefix`/bin/ctags"
 alias cat="bat"
 alias ls="exa -l"
 alias tt="tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
+alias python=/usr/local/bin/python3
+alias pip=/usr/local/bin/pip3
 complete -F __start_kubectl k
 
 export PATH="/usr/local/sbin:$PATH"
