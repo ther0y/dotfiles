@@ -1,0 +1,6 @@
+[user]
+	email = rezazadehmasood@gmail.com
+	name = Masood
+
+[includeIf "gitdir:**/code/global/**/.git"]
+	path = ~/.gitconfig.gwat
