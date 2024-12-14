@@ -14,7 +14,7 @@ end
 
 
 set -x EDITOR "nvim"
-set -x TERM "kitty"
+# set -x TERM "kitty"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 
 set -x OBSIDIAN_VAULT "$HOME/Documents/My Notes"
@@ -54,7 +54,7 @@ end
 set -gx XDG_CURRENT_DESKTOP "KDE"
 set -gx XDE_FULL_SESSION "true"
 
-set -gx PATH "/home/roy/.config/composer/vendor/bin" $PATH
+set -gx PATH "/home/roy/.config/composer/vendor/bin:/usr/local/go/bin" $PATH
 
 set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
 
@@ -82,3 +82,5 @@ set -gx PATH $PATH /home/roy/.cache/lm-studio/bin
 alias clear "command clear; commandline -f clear-screen"
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+source "$HOME/.cargo/env.fish"
