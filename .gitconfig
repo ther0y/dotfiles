@@ -4,5 +4,6 @@
 
 [includeIf "gitdir:**/code/global/**/.git"]
 	path = ~/.gitconfig.gwat
+
 [core]
 	sshCommand = ssh.exe
