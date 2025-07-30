@@ -22,6 +22,9 @@ M.setup_navigation = function()
   map("n", "<M-t>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>")
   map("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>")
   map("n", "<M-s>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>")
+
+  map("i", "jj", "<esc>")
+  map("i", "kk", "<esc>")
 end
 
 M.setup_window = function()
@@ -37,6 +40,10 @@ end
 M.setup_plugins = function()
   -- Add plugin-specific keybindings here
   map("n", "<leader>gs", ":G<CR>")
+
+  map("n", "<leader>gn", ":Gitsigns toggle_current_line_blame<CR>", {
+    desc = "Toggle current line blame",
+  })
 end
 
 -- M.setup_terminal = function()
@@ -52,6 +59,10 @@ M.setup_search = function()
   -- Center the line when navigating search results
   map("n", "n", "nzzzv", { desc = "Next search result and center" })
   map("n", "N", "Nzzzv", { desc = "Previous search result and center" })
+
+  -- C-u and C-d are centered on the current line
+  map("n", "<C-u>", "<C-u>zz", { desc = "Center around current line" })
+  map("n", "<C-d>", "<C-d>zz", { desc = "Center around current line" })
 
   -- Telescope examples (commented out)
   -- map('n', '<leader>ff', '<cmd>Telescope find_files<CR>')
